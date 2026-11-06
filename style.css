@@ -1,9 +1,11 @@
 :root {
-    --gold: #D4AF37;
-    --royal-maroon: #5B0612;
-    --soft-cream: #FFFDD0;
-    --dark-text: #2c2c2c;
-    --sunflower-yellow: #FFC107;
+    --royal-maroon: #4A0E17;
+    --bright-maroon: #6B1426;
+    --gold-primary: #D4AF37;
+    --gold-light: #F3E5AB;
+    --cream-bg: #FCF9F2;
+    --text-dark: #3A2E2B;
+    --text-light: #706361;
 }
 
 * {
@@ -14,24 +16,25 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--soft-cream);
-    color: var(--dark-text);
+    background-color: var(--cream-bg);
+    color: var(--text-dark);
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* --- Curtain Logic & Stage --- */
+/* --- Premium Velvet Curtains Reveal Stage --- */
 .curtain-stage {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1000;
+    z-index: 2000;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     overflow: hidden;
+    background: #110204;
 }
 
 .curtain {
@@ -39,179 +42,158 @@ body {
     top: 0;
     width: 50%;
     height: 100%;
-    background-color: var(--royal-maroon);
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    background: linear-gradient(to right, var(--royal-maroon), var(--bright-maroon));
+    transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
+.velvet-left { left: 0; box-shadow: 10px 0 30px rgba(0,0,0,0.6); }
+.velvet-right { right: 0; box-shadow: -10px 0 30px rgba(0,0,0,0.6); }
 
-.velvet-left { left: 0; border-right: 4px solid var(--gold); }
-.velvet-right { right: 0; border-left: 4px solid var(--gold); }
-
-.curtain-stage.open .velvet-left { transform: translateX(-100%); }
-.curtain-stage.open .velvet-right { transform: translateX(100%); }
+.gold-border-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(var(--gold-primary), var(--gold-light), var(--gold-primary));
+}
+.velvet-left .gold-border-line { right: 0; }
+.velvet-right .gold-border-line { left: 0; }
 
 .curtain-content {
     position: relative;
-    z-index: 1001;
+    z-index: 2100;
     text-align: center;
-    color: white;
-    padding: 20px;
-    transition: opacity 0.5s ease;
+    color: var(--gold-light);
+    padding: 30px;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.curtain-stage.open .curtain-content {
-    opacity: 0;
-    pointer-events: none;
-}
+.curtain-stage.open .velvet-left { transform: translateX(-100%); }
+.curtain-stage.open .velvet-right { transform: translateX(100%); }
+.curtain-stage.open .curtain-content { opacity: 0; transform: scale(0.9); pointer-events: none; }
 
-.title-animation { font-family: 'Cinzel Decorative', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 10px; }
-.names-animation { font-family: 'Great Vibes', cursive; font-size: 3.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); }
-.click-prompt { margin-top: 30px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; animation: pulse 2s infinite; }
+.wedding-symbol { font-size: 3rem; margin-bottom: 15px; color: var(--gold-primary); }
+.curtain-sub { font-family: 'Cinzel Decorative', serif; font-size: 1.2rem; letter-spacing: 3px; margin-bottom: 15px; }
+.curtain-title { font-family: 'Great Vibes', cursive; font-size: 4rem; color: #fff; text-shadow: 0 4px 15px rgba(0,0,0,0.6); line-height: 1.2; }
 
-/* --- Music Control --- */
-.music-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    background: var(--royal-maroon);
-    color: var(--gold);
-    border: 2px solid var(--gold);
-    padding: 10px 15px;
-    border-radius: 30px;
+.open-btn {
+    margin-top: 40px;
+    background: transparent;
+    color: var(--gold-primary);
+    border: 2px solid var(--gold-primary);
+    padding: 12px 35px;
+    font-size: 1rem;
     font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(212,175,55,0.3);
 }
+.open-btn:hover { background: var(--gold-primary); color: var(--royal-maroon); transform: scale(1.05); }
 
-.hidden { display: none !important; }
+/* --- Music Widget Engine --- */
+.music-control {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    background: rgba(74, 14, 23, 0.9);
+    padding: 6px 16px 6px 6px;
+    border-radius: 40px;
+    border: 1px solid var(--gold-primary);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: opacity 0.5s;
+}
+.music-circle-btn {
+    background: var(--gold-primary);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.music-icon { font-size: 1.2rem; }
+.music-text { color: var(--gold-light); font-size: 0.8rem; font-weight: 500; margin-left: 10px; }
 
-/* --- Main Layout --- */
+/* --- Main Layout Frame --- */
 .main-container {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 1s ease-in 0.5s;
-}
-
-.main-container.show-content { opacity: 1; }
-
-/* Hero Section */
-.hero-section {
-    text-align: center;
-    padding: 60px 20px;
-    margin-top: 40px;
-}
-
-.sunflower-icon { font-size: 4rem; animation: rotate 20s linear infinite; display: inline-block; }
-.welcome-text { font-family: 'Cinzel Decorative', serif; color: var(--royal-maroon); letter-spacing: 2px; }
-.main-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(--royal-maroon); margin: 20px 0; line-height: 1.1; }
-.invite-tag { font-size: 1.1rem; font-style: italic; margin-bottom: 30px; }
-
-/* Countdown Container */
-.countdown-container {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-}
-.time-block {
-    background: var(--royal-maroon);
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    min-width: 70px;
-    border: 1px solid var(--gold);
-}
-.time-num { font-size: 1.8rem; font-weight: bold; color: var(--gold); }
-.time-label { font-size: 0.75rem; text-transform: uppercase; }
-
-/* Events Grid */
-.events-section { width: 100%; padding: 40px 10px; text-align: center; }
-.section-heading { font-family: 'Cinzel Decorative', serif; margin-bottom: 40px; color: var(--royal-maroon); }
-
-.events-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-}
-
-@media(min-width: 600px) {
-    .events-grid { grid-template-columns: 1fr 1fr; }
-    .primary-event { grid-column: span 2; }
-}
-
-.event-card {
-    background: white;
-    padding: 30px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-top: 5px solid var(--gold);
     position: relative;
-    transition: transform 0.3s;
+    background: #fff;
+    box-shadow: 0 0 40px rgba(74,14,23,0.06);
+    border-left: 1px solid var(--gold-light);
+    border-right: 1px solid var(--gold-light);
 }
-.event-card:hover { transform: translateY(-5px); }
-.card-flower { font-size: 1.5rem; margin-bottom: 10px; }
-.event-card h3 { color: var(--royal-maroon); font-family: 'Cinzel Decorative', serif; margin-bottom: 10px; }
-.event-card p { margin: 5px 0; }
-.primary-event { border-top: 6px solid var(--royal-maroon); background: #fffcf5; }
+.hidden-content { display: none; opacity: 0; }
+.show-content { display: block; opacity: 1; transition: opacity 1.5s ease-in; }
 
-.map-btn {
-    display: inline-block;
-    margin-top: 15px;
-    background: var(--royal-maroon);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 1px solid var(--gold);
-}
+/* Ornaments */
+.top-ornament { height: 15px; background: radial-gradient(circle, var(--gold-primary) 20%, transparent 20%) 0 0, radial-gradient(circle, var(--gold-primary) 20%, transparent 20%) 8px 8px; background-size: 16px 16px; margin-bottom: 30px; opacity: 0.4; }
+.bottom-ornament { height: 15px; background: radial-gradient(circle, var(--gold-primary) 20%, transparent 20%) 0 0, radial-gradient(circle, var(--gold-primary) 20%, transparent 20%) 8px 8px; background-size: 16px 16px; margin-top: 30px; opacity: 0.4; }
+.section-divider { text-align: center; color: var(--gold-primary); font-size: 1.2rem; margin: 40px 0; letter-spacing: 5px; }
 
-/* RSVP Form */
-.rsvp-section {
-    background: var(--royal-maroon);
-    color: white;
-    width: 100%;
-    padding: 40px 20px;
-    border-radius: 12px;
-    text-align: center;
-    margin: 40px 0;
-    border: 2px solid var(--gold);
-}
-.rsvp-section h2 { font-family: 'Cinzel Decorative', serif; color: var(--gold); margin-bottom: 10px; }
-#rsvp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 400px;
-    margin: 25px auto 0;
-}
-#rsvp-form input, #rsvp-form select {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid var(--gold);
-    font-size: 1rem;
-}
-.submit-btn {
-    background: var(--gold);
-    color: var(--royal-maroon);
-    border: none;
-    padding: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-}
+/* Hero Card Layout */
+.hero-section { text-align: center; padding: 20px 10px; }
+.ganesha-motif { font-size: 3.5rem; color: var(--royal-maroon); margin-bottom: 10px; }
+.traditional-heading { font-family: 'Cinzel Decorative', serif; font-size: 1.2rem; color: var(--gold-primary); letter-spacing: 4px; text-transform: uppercase; }
+.couple-names-wrap { margin: 25px 0; }
+.couple-name { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--royal-maroon); font-weight: 600; }
+.and-symbol { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold-primary); display: block; margin: -10px 0; }
+.invitation-message { font-size: 1rem; color: var(--text-light); max-width: 500px; margin: 0 auto 35px; line-height: 1.8; font-style: italic; }
 
-footer { margin: 40px 0 20px; font-size: 0.85rem; color: #777; }
+/* Timed Countdown Display */
+.countdown-wrapper { background: var(--cream-bg); border: 1px dashed var(--gold-primary); padding: 20px; border-radius: 12px; margin-top: 20px; }
+.countdown-wrapper h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--royal-maroon); margin-bottom: 15px; letter-spacing: 1px; }
+.countdown-container { display: flex; justify-content: center; gap: 12px; }
+.time-block { background: var(--royal-maroon); padding: 12px; border-radius: 8px; min-width: 65px; border-bottom: 3px solid var(--gold-primary); }
+.time-num { font-size: 1.5rem; font-weight: 600; color: #fff; }
+.time-label { font-size: 0.7rem; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
-/* Animations */
-@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* Profiles Layout */
+.couple-grid { display: flex; flex-direction: column; gap: 30px; align-items: center; margin: 20px 0; }
+@media (min-width: 500px) { .couple-grid { flex-direction: row; justify-content: space-around; } }
+.profile-card { text-align: center; padding: 20px; width: 100%; max-width: 240px; }
+.avatar-placeholder { font-size: 3.5rem; margin-bottom: 10px; opacity: 0.9; }
+.profile-card h2 { font-family: 'Playfair Display', serif; color: var(--royal-maroon); font-size: 1.6rem; }
+.parent-info { font-size: 0.85rem; color: var(--text-light); margin-top: 5px; }
+.profile-middle-heart { font-size: 2rem; color: var(--gold-primary); align-self: center; animation: pulse 2s infinite; }
+
+/* Vertical Traditional Timeline */
+.section-title { font-family: 'Cinzel Decorative', serif; font-size: 1.5rem; color: var(--royal-maroon); text-align: center; margin-bottom: 30px; letter-spacing: 2px; }
+.timeline { position: relative; max-width: 100%; margin: 0 auto; padding-left: 20px; }
+.timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--gold-light); top: 0; bottom: 0; left: 30px; }
+
+.timeline-item { position: relative; margin-bottom: 40px; }
+.timeline-dot { position: absolute; width: 24px; height: 24px; left: -1px; top: 12px; background: #fff; border: 2px solid var(--gold-primary); border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+.timeline-content-box { padding: 20px; background: var(--cream-bg); position: relative; border-radius: 8px; margin-left: 40px; border-left: 3px solid var(--gold-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.event-tag { display: inline-block; font-size: 0.75rem; background: var(--gold-primary); color: var(--royal-maroon); padding: 2px 10px; border-radius: 12px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; }
+.timeline-content-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--royal-maroon); margin-bottom: 5px; }
+.event-location, .event-time { font-size: 0.9rem; color: var(--text-dark); margin: 3px 0; }
+
+/* Special Highlighting on Muhurtham Box */
+.main-event-item .timeline-content-box { background: #FFFDF7; border: 2px solid var(--royal-maroon); border-left: 6px solid var(--royal-maroon); }
+.main-dot { width: 32px; height: 32px; left: -5px; font-size: 1rem; border-color: var(--royal-maroon); background: var(--gold-light); }
+.primary-tag { background: var(--royal-maroon) !important; color: #fff !important; }
+.event-time-exact { font-size: 1.1rem; font-weight: 600; color: var(--bright-maroon); margin: 6px 0; }
+.event-location-venue { margin-top: 8px; font-size: 0.95rem; }
+
+/* Buttons Style */
+.premium-btn { display: inline-block; background: linear-gradient(135deg, var(--royal-maroon), var(--bright-maroon)); color: #fff; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-size: 0.9rem; font-weight: 500; border: 1px solid var(--gold-primary); cursor: pointer; transition: all 0.3s; width: auto; text-align: center; }
+.premium-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(74,14,23,0.3); background: var(--royal-maroon); }
+.directions-btn { margin-top: 15px; }
+
+/* Gallery Card Matrix placeholder */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+.gallery-item-placeholder { background: linear-gradient(135deg, #fdfbf7, #f5f0e6); height: 180px; border-radius: 8px; border: 1px solid var(--gold-light); display: flex; align-items: center; justify-content: center; font-style: italic; color: var(--text-light); }
+
+/* Royal Interactive Form Design */
+.rsvp-section { background: var(--royal-maroon); color: #fff; padding: 40px 25px; border-radius: 12px; margin: 40px 0; border: 2px solid var(--gold-primary); box-shadow: 0 10px 30px rgba(74,14,23,0.15); text-align: center; }
+.white-title { color: var(--gold-primary) !important; }
