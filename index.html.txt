@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Prasad & Mamatha - Wedding Invitation</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Elegance -->
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Audio Element for Meghaallo.mp3 -->
+    <audio id="bg-music" loop>
+        <source src="Meghaallo.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Toggle Button -->
+    <button id="music-btn" class="music-btn hidden">🎵 Play Music</button>
+
+    <!-- Curtain Layer (Intro Animation) -->
+    <div id="curtain-stage" class="curtain-stage">
+        <div class="curtain velvet-left"></div>
+        <div class="curtain velvet-right"></div>
+        <div class="curtain-content">
+            <h2 class="title-animation">The Wedding Invitation of</h2>
+            <h1 class="names-animation">Sai Prasad & Mamatha</h1>
+            <p class="click-prompt">Click to Open the Invitation</p>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="main-content" class="main-container hidden-content">
+        
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="sunflower-icon">🌻</div>
+            <p class="welcome-text">Together with their Families</p>
+            <h1 class="main-title">Sai Prasad <br>&<br> Mamatha</h1>
+            <p class="invite-tag">Invite you to celebrate their union</p>
+            <div class="countdown-container" id="countdown">
+                <!-- Driven via JS -->
+            </div>
+        </header>
+
+        <!-- Events Section -->
+        <section class="events-section">
+            <h2 class="section-heading">Wedding Events Schedule</h2>
+            
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="card-flower">🌻</div>
+                    <h3>Haldi Ceremony</h3>
+                    <p class="role">Bride's Residence</p>
+                    <p class="date">📅 18th November 2026</p>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="card-flower">🌻</div>
+                    <h3>Haldi Ceremony</h3>
+                    <p class="role">Groom's Residence</p>
+                    <p class="date">📅 19th November 2026</p>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card primary-event">
+                    <div class="card-flower">🌻</div>
+                    <h3>The Auspicious Muhurtham</h3>
+                    <p class="date">📅 Friday, 20th November 2026</p>
+                    <p class="time">⏰ 11:28 AM</p>
+                    <p class="venue">📍 YS Classic Function Hall,<br>Marikal, Narayanpet Dist.</p>
+                    <a href="https://maps.app.goo.gl/mBcNyiPKUuTStVoF7" target="_blank" class="map-btn">View Map Direction</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simplified RSVP Section -->
+        <section class="rsvp-section">
+            <h2>Are You Attending?</h2>
+            <p>Please let us know by completing this quick form</p>
+            <form id="rsvp-form" action="https://formspree.io" method="POST">
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="number" name="guests" placeholder="Number of Guests" min="1" required>
+                <select name="attendance" required>
+                    <option value="" disabled selected>Will you attend?</option>
+                    <option value="Yes">Joyfully Attending</option>
+                    <option value="No">Regretfully Declining</option>
+                </select>
+                <button type="submit" class="submit-btn">Submit RSVP</button>
+            </form>
+            <p id="rsvp-status" class="status-msg"></p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Made with ❤️ for Sai Prasad & Mamatha</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

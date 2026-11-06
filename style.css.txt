@@ -1,0 +1,217 @@
+:root {
+    --gold: #D4AF37;
+    --royal-maroon: #5B0612;
+    --soft-cream: #FFFDD0;
+    --dark-text: #2c2c2c;
+    --sunflower-yellow: #FFC107;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--soft-cream);
+    color: var(--dark-text);
+    overflow-x: hidden;
+}
+
+/* --- Curtain Logic & Stage --- */
+.curtain-stage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--royal-maroon);
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.velvet-left { left: 0; border-right: 4px solid var(--gold); }
+.velvet-right { right: 0; border-left: 4px solid var(--gold); }
+
+.curtain-stage.open .velvet-left { transform: translateX(-100%); }
+.curtain-stage.open .velvet-right { transform: translateX(100%); }
+
+.curtain-content {
+    position: relative;
+    z-index: 1001;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    transition: opacity 0.5s ease;
+}
+
+.curtain-stage.open .curtain-content {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.title-animation { font-family: 'Cinzel Decorative', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 10px; }
+.names-animation { font-family: 'Great Vibes', cursive; font-size: 3.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); }
+.click-prompt { margin-top: 30px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; animation: pulse 2s infinite; }
+
+/* --- Music Control --- */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: var(--royal-maroon);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.hidden { display: none !important; }
+
+/* --- Main Layout --- */
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in 0.5s;
+}
+
+.main-container.show-content { opacity: 1; }
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 40px;
+}
+
+.sunflower-icon { font-size: 4rem; animation: rotate 20s linear infinite; display: inline-block; }
+.welcome-text { font-family: 'Cinzel Decorative', serif; color: var(--royal-maroon); letter-spacing: 2px; }
+.main-title { font-family: 'Great Vibes', cursive; font-size: 4.5rem; color: var(--royal-maroon); margin: 20px 0; line-height: 1.1; }
+.invite-tag { font-size: 1.1rem; font-style: italic; margin-bottom: 30px; }
+
+/* Countdown Container */
+.countdown-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.time-block {
+    background: var(--royal-maroon);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    min-width: 70px;
+    border: 1px solid var(--gold);
+}
+.time-num { font-size: 1.8rem; font-weight: bold; color: var(--gold); }
+.time-label { font-size: 0.75rem; text-transform: uppercase; }
+
+/* Events Grid */
+.events-section { width: 100%; padding: 40px 10px; text-align: center; }
+.section-heading { font-family: 'Cinzel Decorative', serif; margin-bottom: 40px; color: var(--royal-maroon); }
+
+.events-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+@media(min-width: 600px) {
+    .events-grid { grid-template-columns: 1fr 1fr; }
+    .primary-event { grid-column: span 2; }
+}
+
+.event-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--gold);
+    position: relative;
+    transition: transform 0.3s;
+}
+.event-card:hover { transform: translateY(-5px); }
+.card-flower { font-size: 1.5rem; margin-bottom: 10px; }
+.event-card h3 { color: var(--royal-maroon); font-family: 'Cinzel Decorative', serif; margin-bottom: 10px; }
+.event-card p { margin: 5px 0; }
+.primary-event { border-top: 6px solid var(--royal-maroon); background: #fffcf5; }
+
+.map-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: var(--royal-maroon);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--gold);
+}
+
+/* RSVP Form */
+.rsvp-section {
+    background: var(--royal-maroon);
+    color: white;
+    width: 100%;
+    padding: 40px 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 40px 0;
+    border: 2px solid var(--gold);
+}
+.rsvp-section h2 { font-family: 'Cinzel Decorative', serif; color: var(--gold); margin-bottom: 10px; }
+#rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 25px auto 0;
+}
+#rsvp-form input, #rsvp-form select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--gold);
+    font-size: 1rem;
+}
+.submit-btn {
+    background: var(--gold);
+    color: var(--royal-maroon);
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+footer { margin: 40px 0 20px; font-size: 0.85rem; color: #777; }
+
+/* Animations */
+@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
