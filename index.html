@@ -3,99 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sai Prasad & Mamatha - Wedding Invitation</title>
+    <title>Sai Prasad & Mamatha Wedding Invitation</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for Elegance -->
+    <!-- Premium Fonts -->
     <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Audio Element for Meghaallo.mp3 -->
+    <!-- Audio Element -->
     <audio id="bg-music" loop>
         <source src="Meghaallo.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Music Toggle Button -->
-    <button id="music-btn" class="music-btn hidden">🎵 Play Music</button>
+    <!-- Floating Audio Control -->
+    <div id="music-control" class="music-control hidden">
+        <button id="music-btn" class="music-circle-btn">
+            <span class="music-icon">🎵</span>
+        </button>
+        <span class="music-text">Play Music</span>
+    </div>
 
-    <!-- Curtain Layer (Intro Animation) -->
+    <!-- Premium Grand Royal Curtain Reveal -->
     <div id="curtain-stage" class="curtain-stage">
-        <div class="curtain velvet-left"></div>
-        <div class="curtain velvet-right"></div>
+        <div class="curtain velvet-left">
+            <div class="gold-border-line"></div>
+        </div>
+        <div class="curtain velvet-right">
+            <div class="gold-border-line"></div>
+        </div>
         <div class="curtain-content">
-            <h2 class="title-animation">The Wedding Invitation of</h2>
-            <h1 class="names-animation">Sai Prasad & Mamatha</h1>
-            <p class="click-prompt">Click to Open the Invitation</p>
+            <div class="wedding-symbol">🔱</div>
+            <h2 class="curtain-sub">The Wedding Invitation of</h2>
+            <h1 class="curtain-title">Sai Prasad <br>&<br> Mamatha</h1>
+            <div class="open-knot-container">
+                <button class="open-btn">Tap to Open</button>
+            </div>
         </div>
     </div>
 
-    <!-- Main Content Container -->
+    <!-- Main Invitation Container -->
     <div id="main-content" class="main-container hidden-content">
         
-        <!-- Hero Section -->
-        <header class="hero-section">
-            <div class="sunflower-icon">🌻</div>
-            <p class="welcome-text">Together with their Families</p>
-            <h1 class="main-title">Sai Prasad <br>&<br> Mamatha</h1>
-            <p class="invite-tag">Invite you to celebrate their union</p>
-            <div class="countdown-container" id="countdown">
-                <!-- Driven via JS -->
-            </div>
-        </header>
+        <!-- Top Traditional Banner Ornament -->
+        <div class="top-ornament"></div>
 
-        <!-- Events Section -->
-        <section class="events-section">
-            <h2 class="section-heading">Wedding Events Schedule</h2>
+        <!-- Home / Welcome Section -->
+        <section class="hero-section fade-in">
+            <div class="ganesha-motif">🕉️</div>
+            <p class="traditional-heading">Shubh Vivah</p>
+            <div class="couple-names-wrap">
+                <h1 class="couple-name">Sai Prasad</h1>
+                <span class="and-symbol">&</span>
+                <h1 class="couple-name">Mamatha</h1>
+            </div>
+            <p class="invitation-message">
+                Together with their families, they request the honor of your presence to celebrate their union of love, tradition, and lifelong togetherness.
+            </p>
             
-            <div class="events-grid">
-                <!-- Event 1 -->
-                <div class="event-card">
-                    <div class="card-flower">🌻</div>
-                    <h3>Haldi Ceremony</h3>
-                    <p class="role">Bride's Residence</p>
-                    <p class="date">📅 18th November 2026</p>
-                </div>
+            <!-- Live Countdown Box -->
+            <div class="countdown-wrapper">
+                <h3>Counting Down to the Muhurtham</h3>
+                <div class="countdown-container" id="countdown"></div>
+            </div>
+        </section>
 
-                <!-- Event 2 -->
-                <div class="event-card">
-                    <div class="card-flower">🌻</div>
-                    <h3>Haldi Ceremony</h3>
-                    <p class="role">Groom's Residence</p>
-                    <p class="date">📅 19th November 2026</p>
+        <!-- The Couple Profiles Section -->
+        <section class="couple-section fade-in">
+            <div class="section-divider">✨ ✦ ✨</div>
+            <div class="couple-grid">
+                <div class="profile-card groom">
+                    <div class="avatar-placeholder">🤵</div>
+                    <h2>Sai Prasad</h2>
+                    <p class="parent-info">Son of Smt. & Sri. Groom's Parents</p>
                 </div>
-
-                <!-- Event 3 -->
-                <div class="event-card primary-event">
-                    <div class="card-flower">🌻</div>
-                    <h3>The Auspicious Muhurtham</h3>
-                    <p class="date">📅 Friday, 20th November 2026</p>
-                    <p class="time">⏰ 11:28 AM</p>
-                    <p class="venue">📍 YS Classic Function Hall,<br>Marikal, Narayanpet Dist.</p>
-                    <a href="https://maps.app.goo.gl/mBcNyiPKUuTStVoF7" target="_blank" class="map-btn">View Map Direction</a>
+                <div class="profile-middle-heart">💖</div>
+                <div class="profile-card bride">
+                    <div class="avatar-placeholder">👰</div>
+                    <h2>Mamatha</h2>
+                    <p class="parent-info">Daughter of Smt. & Sri. Bride's Parents</p>
                 </div>
             </div>
         </section>
 
-        <!-- Simplified RSVP Section -->
-        <section class="rsvp-section">
-            <h2>Are You Attending?</h2>
-            <p>Please let us know by completing this quick form</p>
-            <form id="rsvp-form" action="https://formspree.io" method="POST">
-                <input type="text" name="name" placeholder="Your Full Name" required>
-                <input type="number" name="guests" placeholder="Number of Guests" min="1" required>
-                <select name="attendance" required>
-                    <option value="" disabled selected>Will you attend?</option>
-                    <option value="Yes">Joyfully Attending</option>
-                    <option value="No">Regretfully Declining</option>
-                </select>
-                <button type="submit" class="submit-btn">Submit RSVP</button>
-            </form>
-            <p id="rsvp-status" class="status-msg"></p>
+        <!-- Detailed Vertical Timeline Section -->
+        <section class="timeline-section fade-in">
+            <div class="section-divider">✨ ✦ ✨</div>
+            <h2 class="section-title">Wedding Itinerary</h2>
+            
+            <div class="timeline">
+                <!-- Day 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot">💛</div>
+                    <div class="timeline-content-box">
+                        <span class="event-tag">Day 1</span>
+                        <h3>Haldi Ceremony</h3>
+                        <p class="event-location">📍 Bride's Residence</p>
+                        <p class="event-time">📅 Wednesday, 18th Nov 2026</p>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot">💛</div>
+                    <div class="timeline-content-box">
+                        <span class="event-tag">Day 2</span>
+                        <h3>Haldi Ceremony</h3>
+                        <p class="event-location">📍 Groom's Residence</p>
+                        <p class="event-time">📅 Thursday, 19th Nov 2026</p>
+                    </div>
+                </div>
+
+                <!-- Day 3 - Main Event -->
+                <div class="timeline-item main-event-item">
+                    <div class="timeline-dot main-dot">💍</div>
+                    <div class="timeline-content-box highlighted-box">
+                        <span class="event-tag primary-tag">Main Ceremony</span>
+                        <h3>The Auspicious Muhurtham</h3>
+                        <p class="event-time">📅 Friday, 20th November 2026</p>
+                        <p class="event-time-exact">⏰ At 11:28 AM</p>
+                        <p class="event-location-venue"><strong>YS Classic Function Hall</strong><br>Marikal, Narayanpet Dist.</p>
+                        <a href="https://goo.gl" target="_blank" class="premium-btn directions-btn">🧭 Navigate via Google Maps</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>Made with ❤️ for Sai Prasad & Mamatha</p>
+        <!-- Gallery Section Placeholder -->
+        <section class="gallery-section fade-in">
+            <div class="section-divider">✨ ✦ ✨</div>
+            <h2 class="section-title">Pre-Wedding Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item-placeholder"><span>✨ Love ✨</span></div>
+                <div class="gallery-item-placeholder"><span>✨ Joy ✨</span></div>
+                <div class="gallery-item-placeholder"><span>✨ Together ✨</span></div>
+            </div>
+        </section>
+
+        <!-- Premium RSVP Form Section -->
+        <section class="rsvp-section fade-in">
+            <h2 class="section-title white-title">Will You Grace Us With Your Presence?</h2>
+            <p class="rsvp-subtitle">Please respond before November 10, 2026</p>
+            
+            <form id="rsvp-form" action="https://formspree.io" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" id="name" placeholder=" " required>
+                    <label for="name">Your Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="guests" id="guests" placeholder=" " min="1" required>
+                    <label for="guests">Number of Attending Guests</label>
+                </div>
+                <div class="form-group">
+                    <select name="attendance" id="attendance" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="Yes">Joyfully Accepting</option>
+                        <option value="No">Regretfully Declining</option>
+                    </select>
+                    <label for="attendance">Attendance Status</label>
+                </div>
+                <button type="submit" class="premium-btn rsvp-submit-btn">Send Blessing & RSVP</button>
+            </form>
+        </section>
+
+        <!-- Bottom Festive Banner Ornament -->
+        <div class="bottom-ornament"></div>
+
+        <!-- Royal Credits Footer -->
+        <footer class="royal-footer">
+            <p class="footer-blessing">Bless the Couple with your Presence and Prayers.</p>
+            <p class="footer-dev">Designed beautifully for Sai Prasad & Mamatha</p>
         </footer>
     </div>
 
